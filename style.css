@@ -1,0 +1,262 @@
+:root {
+    --fb-navy: #002F6C;
+    --fb-yellow: #FED141;
+    --ege-blue: #0284c7;
+    --bg-dark-premium: #0b1329;
+    --card-bg: rgba(255, 255, 255, 0.96);
+    --text-dark: #1e293b;
+    --text-muted: #475569;
+    --transition-bezier: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+body {
+    background: linear-gradient(135deg, #0b1329 0%, #1c2541 100%);
+    color: var(--text-dark);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Dekoratif Semboller */
+.ambient-glow {
+    position: absolute;
+    border-radius: 50%;
+    z-index: 1;
+    pointer-events: none;
+}
+.bg-1 {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(254,209,65,0.07) 0%, rgba(0,0,0,0) 70%);
+    top: -10%;
+    left: -10%;
+}
+.bg-2 {
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(2,132,199,0.09) 0%, rgba(0,0,0,0) 70%);
+    bottom: -10%;
+    right: -10%;
+}
+.wave-decoration, .glass-decoration {
+    position: absolute;
+    opacity: 0.1;
+    font-size: 32px;
+    pointer-events: none;
+    z-index: 2;
+}
+.wave-decoration { top: 45%; left: 4%; }
+.glass-decoration { bottom: 20%; right: 5%; }
+
+/* Workspace & Header */
+.workspace {
+    width: 92vw;
+    max-width: 1050px;
+    height: 85vh;
+    min-height: 650px;
+    background: var(--card-bg);
+    border-radius: 24px;
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 10;
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.workspace-header {
+    height: 65px;
+    background: var(--fb-navy);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    border-bottom: 4px solid var(--fb-yellow);
+}
+.header-title {
+    color: #ffffff;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-family: sans-serif;
+    font-weight: 800;
+}
+.header-stars {
+    color: var(--fb-yellow);
+    letter-spacing: 5px;
+    font-size: 18px;
+    animation: pulse 2s infinite ease-in-out;
+}
+
+/* Slayt Motoru Alanı */
+.stage {
+    flex: 1;
+    position: relative;
+    padding: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.slide {
+    position: absolute;
+    width: calc(100% - 120px);
+    height: calc(100% - 120px);
+    opacity: 0;
+    transform: scale(0.9) translateY(40px);
+    pointer-events: none;
+    transition: var(--transition-bezier);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.slide.active {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    pointer-events: auto;
+}
+
+/* Form Elemanları ve Tipografi */
+h1 { font-size: 42px; color: var(--fb-navy); margin-bottom: 20px; font-weight: 600; }
+p.lead { font-size: 19px; color: #334155; line-height: 1.8; margin-bottom: 40px; max-width: 750px; }
+.input-container { position: relative; max-width: 480px; margin-bottom: 25px; }
+input[type="text"] {
+    width: 100%;
+    padding: 18px 24px;
+    border: 2px solid #cbd5e1;
+    border-radius: 12px;
+    font-size: 17px;
+    transition: all 0.3s ease;
+    background: #f8fafc;
+}
+input[type="text"]:focus {
+    outline: none;
+    border-color: var(--fb-navy);
+    background: #ffffff;
+    box-shadow: 0 10px 30px rgba(0, 47, 108, 0.08);
+}
+button {
+    background: var(--fb-navy);
+    color: #ffffff;
+    border: none;
+    padding: 18px 40px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    box-shadow: 0 8px 20px rgba(0, 47, 108, 0.15);
+}
+button:hover {
+    background: #001f4d;
+    transform: translateY(-3px);
+    box-shadow: 0 15px 25px rgba(0, 47, 108, 0.25);
+}
+button .arrow {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+button:hover .arrow { transform: translateX(6px); }
+
+/* Aşama 3: Meyhane Düzeni */
+.table-experience {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 40px;
+    align-items: center;
+    background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+    padding: 40px 50px;
+    border-radius: 20px;
+    border: 1px solid #e2e8f0;
+}
+.table-node {
+    text-align: center;
+    background: white;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+    border-top: 4px solid var(--fb-navy);
+    transition: transform 0.8s ease;
+}
+.emoji-icon { font-size: 38px; margin-bottom: 5px; }
+.sub-label { font-size: 13px; color: var(--text-muted); margin-top:5px; }
+.clink-glasses {
+    font-size: 75px;
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: inline-block;
+}
+.clink-glasses:hover { transform: scale(1.2) rotate(-5deg); }
+.clink-glasses.animate { animation: clink 0.5s ease; }
+.pulse-text {
+    font-size: 12px;
+    font-weight: bold;
+    color: var(--fb-navy);
+    margin-top: 10px;
+    animation: textPulse 1.5s infinite;
+}
+.story-helper { text-align: center; margin-top: 25px; font-style: italic; color: var(--ege-blue); font-weight: bold; }
+.center-btn { display: block; margin: 25px auto 0 auto; }
+
+/* Aşama 4: Bilet ve Takvim */
+.premium-pass {
+    display: flex;
+    background: linear-gradient(135deg, var(--fb-navy) 0%, #001f4d 100%);
+    color: white;
+    border-radius: 16px;
+    overflow: hidden;
+    border-left: 12px solid var(--fb-yellow);
+    max-width: 700px;
+    margin-top: 20px;
+    box-shadow: 0 20px 40px rgba(0, 47, 108, 0.15);
+}
+.pass-body { padding: 35px; flex: 2; }
+.pass-tag { color: var(--fb-yellow); font-size: 11px; font-weight: bold; letter-spacing: 3px; font-family:sans-serif; display:block; margin-bottom:5px; }
+.premium-pass h2 { color: white; font-size: 24px; margin-bottom: 12px; border:none; padding:0; }
+.pass-side {
+    padding: 35px;
+    flex: 1;
+    background: rgba(255,255,255,0.03);
+    border-left: 3px dashed rgba(255,255,255,0.08);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.side-emoji { font-size: 32px; }
+.side-tag { font-size: 12px; font-weight: bold; color: var(--fb-yellow); margin-top: 8px; }
+.calendar-instruction { margin-top: 25px; font-weight: bold; color: var(--fb-navy); }
+.calendar-wrapper { display: grid; grid-template-columns: repeat(7, 1fr); gap: 14px; margin: 20px 0; max-width: 700px; }
+.calendar-node {
+    background: #ffffff;
+    padding: 18px;
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: sans-serif;
+    transition: var(--transition-bezier);
+    border: 2px solid #e2e8f0;
+}
+.calendar-node:hover { background: var(--fb-yellow); border-color: var(--fb-yellow); color: var(--fb-navy); transform: translateY(-4px); }
+.calendar-node.selected-day { background: var(--ege-blue) !important; border-color: var(--ege-blue) !important; color: white !important; box-shadow: 0 10px 20px rgba(2, 132, 199, 0.3); }
+#calStatus { font-weight: bold; color: var(--ege-blue); min-height: 20px; }
+
+/* Aşama 5: Mektup */
+.scrolling-letter { max-height: 350px; overflow-y: auto; padding-right: 20px; border-left: 5px solid var(--fb-yellow); padding-left: 25px; }
+.scrolling-letter p { font-size: 16px; margin-bottom: 15px; color: #334155; line-height: 1.8; }
+.letter-bold { font-size: 19px !important; color: var(--text-dark) !important; font-weight: bold; }
+.letter-signature { text-align: right; font-weight: bold; color: var(--fb-navy) !important; font-size: 19px !important; margin-top: 30px; }
+
+/* Hata Bölgesi */
+.error-zone { margin-top: 20px; font-size: 16px; font-weight: bold; color: #dc2626; font-family: sans-serif; min-height: 30px; opacity: 0; transform: translateY(10px); transition: all 0.3s ease; }
+.error-zone.show { opacity: 1; transform: translateY(0); animation: shake 0.4s ease; }
+
+/* Keyframes */
+@keyframes pulse { 0%, 100% { opacity: 0.6; transform: scale(1); } 50% { opacity: 1; transform: scale(1.1); } }
+@keyframes textPulse { 0%, 100% { opacity: 0.7; } 50% { opacity: 1; transform: scale(1.05); } }
+@keyframes shake { 0%, 100% { transform: translateX(0); } 20%, 60% { transform: translateX(-6px); } 40%, 80% { transform: translateX(6px); } }
+@keyframes clink { 0% { transform: scale(1); } 30% { transform: scale(1.25) rotate(-12deg); } 50% { transform: scale(1.25) rotate(12deg); } 100% { transform: scale(1); } }
