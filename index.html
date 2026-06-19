@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kadir Serkan Tekin - Özel Portal</title>
+    <!-- Harici CSS Dosyamız -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Arka Plan Premium Efektleri -->
+    <div class="ambient-glow bg-1"></div>
+    <div class="ambient-glow bg-2"></div>
+    <div class="wave-decoration">🌊</div>
+    <div class="glass-decoration">🥂</div>
+
+    <!-- Ana Panel -->
+    <div class="workspace">
+        <div class="workspace-header">
+            <div class="header-title">Kadir Serkan Tekin • Interaktif Portal</div>
+            <div class="header-stars">★★★★★</div>
+        </div>
+
+        <div class="stage">
+            
+            <!-- SLIDE 1: ENTRANCE -->
+            <div class="slide active" id="slide1">
+                <h1>Sistem Doğrulama Protokolü</h1>
+                <p class="lead">Bu alana erişim sağlamak için sistem yetkilisinin hayatta taviz vermeden uyguladığı o meşhur koruma ve tedbir parolasını girmelisiniz.</p>
+                <div class="input-container">
+                    <input type="text" id="input1" placeholder="Güvenlik parolasını yazın..." autocomplete="off">
+                </div>
+                <button onclick="checkSlide1()">Erişimi Doğrula <span class="arrow">➔</span></button>
+                <div class="error-zone" id="error1"></div>
+            </div>
+
+            <!-- SLIDE 2: TRIVIA MATRIX -->
+            <div class="slide" id="slide2">
+                <h1 id="triviaTitle">Hafıza Matrisi (Aşama 1/3)</h1>
+                <p class="lead" id="triviaDesc">Kadir Serkan Tekin'in adının arkasındaki o iki derin gerekçe nedir?</p>
+                <div class="input-container">
+                    <input type="text" id="input2" placeholder="Cevabınızı girin..." autocomplete="off">
+                </div>
+                <button onclick="checkTrivia()">Veriyi İşle <span class="arrow">➔</span></button>
+                <div class="error-zone" id="error2"></div>
+            </div>
+
+            <!-- SLIDE 3: INTERACTIVE CLINK -->
+            <div class="slide" id="slide3">
+                <h1>Protokol 600 KM: Gönül Mesafesi</h1>
+                <p class="lead">Bilkent'te canımın sıkıldığı o akşamı hatırladın mı? Sen Muğla'da masadayken mesafeleri tek bir kararla sıfırlamıştık. Şimdi o kadehleri yeniden bir araya getirelim.</p>
+                
+                <div class="table-experience">
+                    <div class="table-node ani-left">
+                        <div class="emoji-icon">🏛️</div>
+                        <h3>Ankara</h3>
+                        <p class="sub-label">Bilkent Odası</p>
+                    </div>
+                    <div class="glass-interaction-area">
+                        <div class="clink-glasses" id="glasses" onclick="playClinkInteraction()">🥂</div>
+                        <p id="clickLabel" class="pulse-text">Kadehe Dokun</p>
+                    </div>
+                    <div class="table-node ani-right">
+                        <div class="emoji-icon">🌳</div>
+                        <h3>Muğla</h3>
+                        <p class="sub-label">Süpüroğlu Masası</p>
+                    </div>
+                </div>
+                <p id="storySub" class="story-helper">Kadehi tıklatarak masayı kurun.</p>
+                <button id="slide3Btn" class="center-btn" style="display:none;" onclick="playStepSound(); goToSlide(4)">Ödül Detayına İlerle <span class="arrow">➔</span></button>
+            </div>
+
+            <!-- SLIDE 4: PASSPORT & CALENDAR -->
+            <div class="slide" id="slide4">
+                <h1>Doğrulama Başarılı: Ödül Tanımlandı</h1>
+                <p class="lead" style="margin-bottom: 15px;">Tüm hafıza ve anı katmanları eşleşti. Kadir Serkan Bey için hazırlanan özel seyahat kartı aşağıdadır:</p>
+                
+                <div class="premium-pass">
+                    <div class="pass-body">
+                        <span class="pass-tag">VIP BOARDING PROTOCOL</span>
+                        <h2>Kos Adası Günübirlik Rakı-Balık Rotası</h2>
+                        <p><strong>Hat Bilgisi:</strong> Turgutreis D-Marin Kalkış ➔ Kos Limanı Varış</p>
+                        <p style="margin-top: 4px;"><strong>Zamanlama:</strong> 08:30 Gidiş Seferi | 17:15 - 18:00 Dönüş Seferi</p>
+                    </div>
+                    <div class="pass-side">
+                        <span class="side-emoji">🏝️</span>
+                        <span class="side-tag">D-MARIN</span>
+                    </div>
+                </div>
+
+                <p class="calendar-instruction">Lütfen bu yaz dönemi için gitmek istediğiniz sembolik bir Temmuz gününü seçin:</p>
+                <div class="calendar-wrapper">
+                    <div class="calendar-node" onclick="selectPremiumDay(this, '4 Temmuz Cuma')">4 Tem</div>
+                    <div class="calendar-node" onclick="selectPremiumDay(this, '5 Temmuz Cumartesi')">5 Tem</div>
+                    <div class="calendar-node" onclick="selectPremiumDay(this, '11 Temmuz Cuma')">11 Tem</div>
+                    <div class="calendar-node" onclick="selectPremiumDay(this, '12 Temmuz Cumartesi')">12 Tem</div>
+                    <div class="calendar-node" onclick="selectPremiumDay(this, '18 Temmuz Cuma')">18 Tem</div>
+                    <div class="calendar-node" onclick="selectPremiumDay(this, '19 Temmuz Cumartesi')">19 Tem</div>
+                    <div class="calendar-node" onclick="selectPremiumDay(this, '25 Temmuz Cuma')">25 Tem</div>
+                </div>
+
+                <div id="calStatus"></div>
+                <button id="calNextBtn" style="display:none; margin-top: 10px;" onclick="playStepSound(); goToSlide(5)">Mührü Kır ve Mektubu Aç <span class="arrow">➔</span></button>
+            </div>
+
+            <!-- SLIDE 5: PREMIUM LETTER -->
+            <div class="slide" id="slide5">
+                <h1>Canım Babama...</h1>
+                <div class="scrolling-letter">
+                    <p class="letter-bold">Babalar Günün Kutlu Olsun!</p>
+                    <p>Hayat yolculuğunda sergilediğin o vizyoner, akademik ve dik duruşunla; aynı zamanda halkın içinden gelen o engin ve yardımsever yüreğinle bana her zaman ışık oldun.</p>
+                    <p>Ankara'da en çok daraldığım anda Muğla'dan uzattığın o görüntülü kadeh eli, mesafelerin bizim aramızda sadece ufak bir teferruat olduğunu öğretti bana. "Güven iyidir, tedbir daha iyidir" sözünü rehber edindim.</p>
+                    <p>Gerekli tüm lojistik tedbirleri aldım, feribot seferlerini kontrol ettim. Şimdi senin seçtiğin o tarihte, Turgutreis'ten Kos'a doğru yan yana, canlı canlı kadeh kaldırma vakti!</p>
+                    <p class="letter-signature">Seni Çok Seven Oğlun... 💛💙</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Harici JavaScript Dosyamız -->
+    <script src="app.js"></script>
+</body>
+</html>
